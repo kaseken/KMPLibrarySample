@@ -1,0 +1,15 @@
+{
+  "originHash" : "4ce71afb69ea8c2710e08e350fe3255cd404160d85c21529cbdfaa46965dd189",
+  "pins" : [
+    {
+      "identity" : "kmpsampleswiftpackage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kaseken/KMPSampleSwiftPackage",
+      "state" : {
+        "revision" : "e434ca18e2f12d4bfdb1f5cf224abf5c09d1ad6a",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}
