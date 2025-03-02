@@ -4,12 +4,11 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
   alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.androidLibrary)
-  alias(libs.plugins.mavenPublish)
+  alias(libs.plugins.mavenPublish) // = id("maven-publish")
 }
 
 kotlin {
   androidTarget {
-    publishLibraryVariants("release")
     compilations.all {
       compileTaskProvider.configure { compilerOptions { jvmTarget.set(JvmTarget.JVM_1_8) } }
     }
@@ -43,7 +42,7 @@ android {
 
 group = "com.github.kaseken"
 
-version = "1.0.7"
+version = "1.0.8"
 
 publishing {
   repositories {
