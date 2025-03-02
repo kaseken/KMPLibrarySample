@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
   alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.androidLibrary)
-  id("maven-publish")
+  alias(libs.plugins.mavenPublish)
 }
 
 kotlin {
@@ -44,15 +44,11 @@ android {
   }
 }
 
+group = "com.github.kaseken"
+
+version = "1.0.7"
+
 publishing {
-  publications {
-    create<MavenPublication>("release") {
-      from(components["kotlin"])
-      groupId = "com.github.kaseken"
-      artifactId = "kmpsamplelibrary"
-      version = "1.0.4"
-    }
-  }
   repositories {
     maven {
       name = "GitHubPackages"
@@ -62,6 +58,14 @@ publishing {
         username = System.getenv("GITHUB_USERNAME") ?: ""
         password = System.getenv("GITHUB_TOKEN") ?: ""
       }
+    }
+  }
+  publications {
+    register<MavenPublication>("gpr") {
+      from(components["kotlin"])
+      groupId = project.group.toString()
+      artifactId = "kmpsamplelibrary"
+      version = project.version.toString()
     }
   }
 }
