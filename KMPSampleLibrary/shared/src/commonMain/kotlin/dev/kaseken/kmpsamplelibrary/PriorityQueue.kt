@@ -1,6 +1,6 @@
 package dev.kaseken.kmpsamplelibrary
 
-class PriorityQueue<T>(private val comparator: (T, T) -> Int) {
+class PriorityQueue<T: Comparable<T>>(private val comparator: (T, T) -> Int) {
   private val heap = mutableListOf<T>()
 
   fun isEmpty(): Boolean = heap.isEmpty()
