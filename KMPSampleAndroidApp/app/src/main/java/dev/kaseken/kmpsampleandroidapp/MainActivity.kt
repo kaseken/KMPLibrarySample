@@ -11,7 +11,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import dev.kaseken.kmpsampleandroidapp.ui.theme.KMPSampleAndroidAppTheme
 import dev.kaseken.kmpsampleandroidapp.utils.PriorityQueueUtil
 import kotlin.random.Random
 
@@ -20,14 +19,12 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     enableEdgeToEdge()
     setContent {
-      KMPSampleAndroidAppTheme {
-        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-          val array = createRandomIntArray(5)
-          val min = PriorityQueueUtil.pickMinimum(array)
-          Greeting(
-              text = "The minimum element in $array is $min.",
-              modifier = Modifier.padding(innerPadding))
-        }
+      Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        val array = createRandomIntArray(5)
+        val min = PriorityQueueUtil.pickMinimum(array)
+        Greeting(
+            text = "The minimum element in $array is $min.",
+            modifier = Modifier.padding(innerPadding))
       }
     }
   }
@@ -45,5 +42,5 @@ fun Greeting(text: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-  KMPSampleAndroidAppTheme { Greeting("Android") }
+  Greeting("Android")
 }
