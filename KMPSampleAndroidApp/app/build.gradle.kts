@@ -49,7 +49,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
 
-    implementation("com.github.kaseken:kmpsamplelibrary:1.0.0")
+    implementation(libs.kmpsamplelibrary)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
