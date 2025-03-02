@@ -4,11 +4,12 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
   alias(libs.plugins.kotlinMultiplatform)
   alias(libs.plugins.androidLibrary)
-  id("maven-publish")
+  alias(libs.plugins.mavenPublish)
 }
 
 kotlin {
   androidTarget {
+    publishLibraryVariants("release")
     compilations.all {
       compileTaskProvider.configure { compilerOptions { jvmTarget.set(JvmTarget.JVM_1_8) } }
     }
@@ -23,6 +24,9 @@ kotlin {
   }
 
   sourceSets {
+    val commonMain by getting
+    val androidMain by getting
+
     commonMain.dependencies {
       // put your multiplatform dependencies here
     }
@@ -40,24 +44,28 @@ android {
   }
 }
 
+group = "com.github.kaseken"
+
+version = "1.0.7"
+
 publishing {
-  publications {
-    create<MavenPublication>("KMPLibrarySample") {
-      from(components["kotlin"])
-      groupId = "com.github.kaseken"
-      artifactId = "kmpsamplelibrary"
-      version = "1.0.0"
-    }
-  }
   repositories {
     maven {
       name = "GitHubPackages"
-      url = uri("https://maven.pkg.github.com/kaseken/KMPLibrarySample")
+      url = uri("https://maven.pkg.github.com/kaseken/KMPSampleLibrary")
 
       credentials {
         username = System.getenv("GITHUB_USERNAME") ?: ""
         password = System.getenv("GITHUB_TOKEN") ?: ""
       }
+    }
+  }
+  publications {
+    register<MavenPublication>("gpr") {
+      from(components["kotlin"])
+      groupId = project.group.toString()
+      artifactId = "kmpsamplelibrary"
+      version = project.version.toString()
     }
   }
 }
