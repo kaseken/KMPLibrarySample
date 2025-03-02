@@ -24,9 +24,6 @@ kotlin {
   }
 
   sourceSets {
-    val commonMain by getting
-    val androidMain by getting
-
     commonMain.dependencies {
       // put your multiplatform dependencies here
     }
